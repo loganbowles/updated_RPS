@@ -1,3 +1,13 @@
+// keeps score of the game using JSON local storage since we converted to string earlier
+
+let score = JSON.parse(localStorage.getItem('score')) || {
+    wins: 0,
+    losses: 0,
+    ties: 0
+  };
+
+
+// random move for the computer
 function pickComputerMove() {
   const randomNumber = Math.random();
   let computerMove = '';
@@ -10,6 +20,7 @@ function pickComputerMove() {
   } return computerMove;
 } 
 
+// game function that tells the result after computer move and player choose
 function playGame(playerMove) {
   const computerMove = pickComputerMove();
   
@@ -40,6 +51,25 @@ function playGame(playerMove) {
       result = 'You Win!';
     }
   }
+
+  // increases score based on result
+  if(result === 'You Win!') {
+    score.wins++;
+  } else if(result === "You Lose!") {
+    score.losses++;
+  } else {
+    score.ties++;
+  }
+  // stores score in local storage, then converting score into string using JSON
+  localStorage.setItem('score', JSON.stringify(score));
   
-  alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}`);
+  // alert after playerchoice to tell user the result in alertbox
+  alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result} \n Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`);
 }
+
+
+
+
+
+
+
