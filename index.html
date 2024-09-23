@@ -15,12 +15,22 @@
 
 <button onclick="playGame('scissors');">Scissors</button>
 
+<p class="js-result"></p>
+
+<p class="js-moves"></p>
+
+<p class="js-score"></p>
+
 <button onclick="
   score.wins = 0;
   score.losses = 0;
   score.ties = 0;
   localStorage.removeItem('score');
+  document.querySelector('.js-score').innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`;
+  document.querySelector('.js-result').innerHTML = '';
+  document.querySelector('.js-moves').innerHTML = '';
 ">Reset Score</button>
+
 
 
   <script src="script.js"></script> 

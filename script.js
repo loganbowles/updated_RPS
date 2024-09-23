@@ -6,6 +6,9 @@ let score = JSON.parse(localStorage.getItem('score')) || {
     ties: 0
   };
 
+  // display scores on the page
+document.querySelector('.js-score').innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`
+
 
 // random move for the computer
 function pickComputerMove() {
@@ -59,17 +62,17 @@ function playGame(playerMove) {
     score.losses++;
   } else {
     score.ties++;
-  }
+  } 
   // stores score in local storage, then converting score into string using JSON
   localStorage.setItem('score', JSON.stringify(score));
-  
-  // alert after playerchoice to tell user the result in alertbox
-  alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result} \n Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`);
+
+
+// adds the result of the turn under the buttons
+document.querySelector('.js-result').innerHTML = `${result}`;
+
+document.querySelector('.js-moves').innerHTML = `Player: ${playerMove} - Computer: ${computerMove}`;
+
+  // display scores on the page without refreshing
+document.querySelector('.js-score').innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`
+
 }
-
-
-
-
-
-
-
