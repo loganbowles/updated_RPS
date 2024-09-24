@@ -23,6 +23,17 @@ function pickComputerMove() {
   } return computerMove;
 } 
 
+// function to reset score and game text when clicked
+function resetScore() {
+  score.wins = 0;
+  score.losses = 0;
+  score.ties = 0;
+  localStorage.removeItem('score');
+  document.querySelector('.js-score').innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`;
+  document.querySelector('.js-result').innerHTML = '';
+  document.querySelector('.js-moves').innerHTML = '';
+}
+
 // game function that tells the result after computer move and player choose
 function playGame(playerMove) {
   const computerMove = pickComputerMove();
@@ -74,5 +85,6 @@ document.querySelector('.js-moves').innerHTML = `Player: ${playerMove} - Compute
 
   // display scores on the page without refreshing
 document.querySelector('.js-score').innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`
+
 
 }
