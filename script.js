@@ -22,7 +22,7 @@ function pickComputerMove() {
     computerMove = 'scissors';
   } return computerMove;
 } 
-
+ 
 // function to reset score and game text when clicked
 function resetScore() {
   score.wins = 0;
@@ -81,7 +81,7 @@ function playGame(playerMove) {
 // adds the result of the turn under the buttons
 document.querySelector('.js-result').innerHTML = `${result}`;
 
-document.querySelector('.js-moves').innerHTML = `Player: ${playerMove} - Computer: ${computerMove}`;
+document.querySelector('.js-moves').innerHTML = `You <img src="pics/${playerMove}-emoji.png" class="move-icon"> <img src="pics/${computerMove}-emoji.png" class="move-icon"> Computer`;
 
   // display scores on the page without refreshing
 document.querySelector('.js-score').innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`
